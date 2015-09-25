@@ -4,5 +4,5 @@ class Project < ActiveRecord::Base
 
 	has_many :projectphotos, dependent: :destroy
 
-	accepts_nested_attributes_for	:projectphotos
+	accepts_nested_attributes_for	:projectphotos, allow_destroy: true
 end

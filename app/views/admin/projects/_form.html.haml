@@ -14,11 +14,30 @@
 						.col-md-4
 							.fileupload.fileupload-new.admin-form{"data-provides" => "fileupload"}
 								.fileupload-preview.thumbnail.mb20
-									=holder_tag '222x140'
+									-if @project.projectphotos.any?
+										=image_tag @project.projectphotos.first.image
+									-else
+										=holder_tag '222x140'
 								.row
 									.col-xs-12.pr5
 										=f.fields_for :projectphoto, Projectphoto.new, html: { multipart: true, id: "fileupload"	} do |op|
 											= op.file_field :image, multiple: true, id: 'fileupload', name: "project[projectphotos_attributes][][image]", class: 'button btn-system btn-file btn-block'
+							-if @project.projectphotos.any?
+								.row
+									.col-md-12.pl15
+										#p1.panel.sort-disable.mb50{"data-panel-collapse" => "false", "data-panel-color" => "false", "data-panel-fullscreen" => "false", "data-panel-remove" => "false"}
+											.panel-heading
+												%span.panel-icon
+													%i.fa.fa-pencil
+												%span.panel-title Удалить
+											.panel-body
+												%p
+													=f.fields_for :projectphotos do |builder|
+														=image_tag builder.object.image, width: 40
+														=builder.label :_destroy, 'Удалить фотографию'
+														=builder.check_box :_destroy
+														%br
+														%hr.short.alt
 						.col-md-8.pl15
 							.section.mb10
 								%label.field.prepend-icon
