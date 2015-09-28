@@ -12,8 +12,14 @@ class Admin::ProjectsController < AdminController
 	end
 
 	def update
-		@project.update!(project_params)
-		redirect_to admin_projects_path
+		if @project.update(project_params)
+			if params[:projectphotos]
+
+				params[:projectphotos].each { |image| @project.projectphotos.create(image: image) }
+			end
+			redirect_to admin_projects_path
+			flash[:success] = "Обновлено"
+		end
 	end
 	
 	def edit
@@ -25,9 +31,13 @@ class Admin::ProjectsController < AdminController
 	def create
 		@project = Project.new(project_params)
 		if @project.save
+			if params[:projectphotos]
+				params[:projectphotos].each { |image| @project.projectphotos.create(image: image) }
+			end
 			redirect_to admin_projects_path
 			flash[:success] = 'Вы успешно создали проект'
 		else
+			flash[:alert] = 'Что-то пошло не так'
 			render 'new'
 		end
 	end

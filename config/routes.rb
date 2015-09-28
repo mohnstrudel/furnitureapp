@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get 'front/index'
 
   devise_for :user, :path => '', :path_names => { :sign_in => "admin/login", :sign_out => "admin/logout", :sign_up => "admin/register" }
-  
+
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
     resources :projects
     resources :services
     resources :teammembers
+    resources :projectphotos
   end
 
   root 'front/projects#index'

@@ -25,6 +25,9 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'bootstrap-glyphicons'
 
+# Uploading multiple files at once
+gem 'jquery-fileupload-rails'
+
 # Placeholder images
 gem 'holder_rails'
 

@@ -8,10 +8,12 @@
 		= csrf_meta_tags
 	%body
 		#main
-			= render "layouts/admin/header"
-			= render "layouts/admin/sidebar"
+			-if current_user
+				= render "layouts/admin/header"
+				= render "layouts/admin/sidebar"
 			%section#content_wrapper
-				= render 'layouts/admin/topbar'
+				-if current_user
+					= render 'layouts/admin/topbar'
 				- flash.each do |name, msg|
 					-classname = "alert alert-#{name} alert-dismissable"
 					=content_tag :div, msg, class: classname
