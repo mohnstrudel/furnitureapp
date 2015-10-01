@@ -109,11 +109,19 @@
         }
         // MOUSEWHEEL:
         if (slider.vars.mousewheel) {
-          slider.bind('mousewheel', function(event, delta, deltaX, deltaY) {
-            event.preventDefault();
-            var target = (delta < 0) ? slider.getTarget('next') : slider.getTarget('prev');
-            slider.flexAnimate(target, slider.vars.pauseOnAction);
-          });
+          if (typeof ($.debounce) == 'function') {
+            slider.bind('mousewheel', $.debounce( 100, true, function(event, delta, deltaX, deltaY) {
+              event.preventDefault();
+              var target = (delta < 0) ? slider.getTarget('next') : slider.getTarget('prev');
+              slider.flexAnimate(target, slider.vars.pauseOnAction);
+            }));
+          } else {
+            slider.bind('mousewheel', function(event, delta, deltaX, deltaY) {
+              event.preventDefault();
+              var target = (delta < 0) ? slider.getTarget('next') : slider.getTarget('prev');
+              slider.flexAnimate(target, slider.vars.pauseOnAction);
+            });
+          }
         }
 
         // PAUSEPLAY

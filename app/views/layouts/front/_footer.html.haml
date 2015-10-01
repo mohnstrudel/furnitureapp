@@ -1,0 +1,28 @@
+.container
+	%nav.cd-side-navigation
+		%ul.nav
+			%li
+				.item
+					=link_to root_path, data: { menu: 'index', num: 1 } do
+						%span.number 01
+						%span.line
+						%span.title Работы
+			%li
+				.item
+					=link_to front_services_path, data: { menu: 'services', num: 2 } do
+						%span.number 02
+						%span.line.half
+						%span.title Услуги
+			%li
+				.item
+					%a{"data-menu" => "teams", "data-num" => "3", :href => "#"}
+						%span.number 03
+						%span.line.half
+						%span.title Команда
+			%li
+				.item
+					=link_to contact_path, data: { menu: 'contacts', num: 4 } do
+						%span.number 04
+						%span.line.half
+						%span.title Контакты
+#cd-loading-bar.index{"data-scale" => "1"}

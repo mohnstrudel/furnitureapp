@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
 
   namespace :front do
-  get 'projects/index'
+    get 'projects/index'
+    resources :projects
+    resources :services
+    resources :teammembers
   end
+
+  match '/contact', to: 'front/static_pages#contacts', via: 'get'
 
   get 'front/index'
 

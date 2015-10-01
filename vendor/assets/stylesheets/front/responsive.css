@@ -1,3 +1,9 @@
+@media screen and (max-width: 1100px) {
+  .flex-control-nav {
+    right: -22px;
+  }
+}
+
 @media screen and (max-height: 900px) {
   
   .content-block .projects li .image {
@@ -47,7 +53,7 @@
   
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 750px) {
   
   .content-block .projects li .image {
     overflow: hidden;
@@ -96,13 +102,7 @@
   
 }
 
-@media screen and (max-width: 1100px) {
-  .flex-control-nav {
-    right: -22px;
-  }
-}
-
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 660px) {
   
   .content-block .projects li .image {
     overflow: hidden;
@@ -174,7 +174,87 @@
   
 }
 
-@media (max-width: 480px) { 
+@media screen and (max-height: 580px) {
+  
+  .cd-side-navigation {
+    margin-top: -75px;
+  }
+  
+  .flex-control-nav {
+    top: 45%;
+  }
+  
+  .content-block .projects li .image {
+    overflow: hidden;
+    height: 340px;
+  }
+  
+  .content-block .services li .image {
+    overflow: hidden;
+    height: 170px;
+  }
+  
+  .content-block .teams .team-member,
+  .content-block .about {
+    height: 340px;
+  }
+  
+  .content-block .teams .team-member .image,
+  .content-block .teams .team-member .desc {
+    height: 170px;
+  }
+  
+  .content-block .teams .team-member .image {
+    overflow: hidden;
+  }
+  
+  .content-block .teams .team-member .image img {
+    height: auto;
+  }
+  
+  .content-block .teams .team-member .projects-numbers {
+    margin-top: 10%;
+  }
+  
+  .content-block .teams .team-member .projects-numbers .number {
+    bottom: -40%;
+    font-size: 10.25em;
+  }
+  
+  .content-block .about .about-logo {
+    margin-top: 5%;
+  }
+  
+  .content-block .contacts {
+    margin-top: 0;
+  }
+  
+  .content-block .teams .team-member .desc .title {
+    padding-top: 3%;
+  }
+  
+  #teams.content > .row {
+    width: 100%;
+    margin: 0;
+  }
+  
+  .content-block .teams.teams-block,
+  .content-block .about {
+
+  }
+  
+  .content-block .about .aboutus p, 
+  .content-block.detail .description p {
+    font-size: 0.813em;
+  }
+  
+  .content-block .about .about-logo .title {
+    font-size: 1.625em;
+  }
+  
+}
+
+@media (max-width: 960px) { 
 
   #cd-loading-bar {
     display: none;
@@ -247,6 +327,10 @@
     z-index: 999;
   }
 
+  .cd-side-navigation {
+    margin-top: 0;
+  }
+  
   .cd-side-navigation,
   .menu-top .nav {
     overflow: hidden;
@@ -256,7 +340,7 @@
     
     width: 100%;
     
-    z-index: 1;
+    z-index: inherit;
   }
   
   .cd-side-navigation .nav {
@@ -285,23 +369,23 @@
     height: 3px;
     
     background-color: #9b9b9b;
+    
+    z-index: 2;
   }
   
   .nav a {
     position: relative;
     display: block;
+    
+    z-index: 2;
   }
   
   .nav .line.half:before {
     width: 100%;
   }
   
-  .content-block .nav a .line:before {
+  .nav a .line:before {
     background-color: #fcc92f;
-  }
-
-  .menu-top .nav li .item:before {
-    
   }
   
   .menu-top .nav a .line:before {
@@ -345,6 +429,8 @@
   .content-block .projects li .image {
     width: 1170px;
     height: 684px;
+    
+    visibility: visible;
   }
   
   .content-block .projects li .image img {

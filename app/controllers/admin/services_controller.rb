@@ -1,7 +1,7 @@
 class Admin::ServicesController < AdminController
 	layout "admin"
 	
-	before_action :find_service, only: [:edit, :update]
+	before_action :find_service, only: [:edit, :update, :destroy]
 
 	def index
 		@services = Service.all
@@ -26,6 +26,13 @@ class Admin::ServicesController < AdminController
 	def update
 		@service.update(service_params)
 		redirect_to admin_services_path
+	end
+
+	def destroy
+		if @service.destroy
+			redirect_to admin_services_path
+			flash[:info] = 'Вы успешно удалили услугу'
+		end
 	end
 
 	private

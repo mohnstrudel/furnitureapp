@@ -1,0 +1,63 @@
+%main.cd-main
+  %section.cd-section.index.visible
+    / content-block starts here
+    .content-block.dark.detail
+      .container
+        .panel-top
+          .left.pull-left
+            %a#menu-top-link.menu-top-link Menu
+          .back.pull-left.text-center
+            .middle
+              =link_to root_path, title: 'ArtLand Studio' do
+                %span.close-menu
+            .helper
+          .phone.pull-right.text-right
+            %a{:href => "callto:+74952874787"} +7 495 287-47-87
+        .content.project
+          .flexslider.flex-slider-detail
+            %ul.projects.slides
+              -@project.projectphotos.each do |pp|
+                %li
+                  .image
+                    =image_tag pp.image.to_s
+            .custom-navigation
+              %a.flex-prev{:href => "#"}
+              %a.flex-next{:href => "#"}
+          .title.title-detail
+            =@project.title
+          .number-slide
+            %span.current
+            %span.total
+          .description
+            .row
+              .col-md-6
+                .title Designing
+              .col-md-6
+                .text
+                  %p
+                    =@project.desctitle
+                  %p
+                    -@splittedText[0].each do |first|
+                      =first
+                  %p
+                    -if @splittedText[1]
+                      -@splittedText[1].each do |second|
+                        =second
+                  %p.yellow
+                    -if @splittedText[2]
+                      -@splittedText[2].each do |third|
+                        =third
+          .row.next-block
+            .col-md-6.current
+              .image.grayscale
+                =image_tag @project.projectphotos.first.image.to_s
+            .col-md-6.next
+              .image
+                =image_tag @project.next.projectphotos.first.image.to_s
+              .wrap
+                .middle
+                  .title
+                    =link_to @project.next.title, front_project_path(@project.next)
+                .helper
+    / content-block ends here
+#cd-loading-bar.index{"data-scale" => "1"}

@@ -1,0 +1,27 @@
+%main.cd-main
+  %section.cd-section.index.visible
+    / content-block starts here
+    .content-block.light
+      .container
+        .panel-top
+          .left.pull-left
+            %a#menu-top-link.menu-top-link Menu
+          .logo.pull-left.text-center
+            %a{:href => "#", :title => "ArtLand Studio"}
+              %img{:alt => "ArtLand Studio", :src => "img/logo.svg", :width => "48"}/
+          .phone.pull-right.text-right
+            %a{:href => "callto:+74952874787"} +7 495 287-47-87
+        #services.content
+          .flexslider.flex-slider
+            %ul.services.slides
+              -@services.in_groups_of(4, false).each do |service_four|
+                %li
+                  -service_four.each do |service_single|
+                    .service
+                      .image.grayscale
+                        =image_tag service_single.servicepics.first.servicepic.to_s
+                      .center.dark
+                        .middle
+                          .title
+                            =link_to service_single.title, front_service_path(service_single.id)
+                        .helper
