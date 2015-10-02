@@ -10,8 +10,6 @@ Rails.application.routes.draw do
 
   match '/contact', to: 'front/static_pages#contacts', via: 'get'
 
-  get 'front/index'
-
   devise_for :user, :path => '', :path_names => { :sign_in => "admin/login", :sign_out => "admin/logout", :sign_up => "admin/register" }
 
   namespace :admin do
@@ -20,9 +18,16 @@ Rails.application.routes.draw do
     resources :services
     resources :teammembers
     resources :projectphotos
+    resources :settings
   end
 
   root 'front/projects#index'
+
+  # Custom routes because of the javascript
+
+  get '/front/index', to: 'front/projects#index', as: '/' 
+  get '/front/teams', to: 'front/teammembers#index', as: '/team'
+  get '/front/contacts', to: 'front/static_pages#contacts'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

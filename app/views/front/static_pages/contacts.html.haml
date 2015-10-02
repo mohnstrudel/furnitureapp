@@ -5,23 +5,17 @@
       .map-wrap
         #map.map
       .container
-        .panel-top
-          .left.pull-left
-            %a#menu-top-link.menu-top-link Menu
-          .logo.pull-left.text-center
-            %a{:href => "#", :title => "ArtLand Studio"}
-              %img{:alt => "ArtLand Studio", :src => "img/logo.svg", :width => "48"}/
-          .phone.pull-right.text-right
-            %a{:href => "callto:+74952874787"} +7 495 287-47-87
+        =render 'shared/top_bar'
         #contacts.content
           .row
-            .col-md-6.contacts
+            .col-md-6.contacts{style: 'margin-top: 0px;'}
               .row
                 .col-md-6
                   .address
                     %p
                       %strong Адрес
-                    %p Ленинский пр-т, дом1, этаж 14, офис 1413 (проезд от метро &laquo;Октябрьская&raquo;).
+                    %p
+                      =Setting.first.address
                     %p &nbsp;
                     %p
                       %strong Режим работы офиса
@@ -33,13 +27,9 @@
                 .col-md-6.mtop
                   .phone
                     %p
-                      %a{:href => "callto:+74951126327"} +7 495 112-63-27
+                      =link_to Setting.first.phone, "callto:#{Setting.first.phone.gsub(/\s+/, "").gsub(/-/, "")}"
                     %p
-                      %a{:href => "callto:+74953621547"} +7 495 362-15-47
-                    %p
-                      %a{:href => "callto:+74951512575"} +7 495 151-25-75
+                      =link_to Setting.first.phone2, "callto:#{Setting.first.phone2.gsub(/\s+/, "").gsub(/-/, "")}"
                   .emails
                     %p
-                      %a{:href => "mailto:support@artlands.ru"} support@artlands.ru
-                    %p
-                      %a{:href => "mailto:info@artlands.ru"} info@artlands.ru
+                      =link_to Setting.first.mail, "mailto:#{Setting.first.mail}"

@@ -101,10 +101,15 @@
     if ($('#map').length) {
     
       $('#map').height($('.content-block').height());
+
+      var myLatLng = {lat: 55.721394, lng: 37.778801};
+      var center = {lat: 55.721394, lng: 37.758801};
+
+
     
       map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(56, 37),
-        zoom: 8,
+        center: center,
+        zoom: 14,
         zoomControl: false,
         streetViewControl: false,
         scaleControl: false,
@@ -144,6 +149,13 @@
             ]
           }
         ]
+      });
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'ArtLand Studio',
+        label: 'ArtLand Studio'
       });
     
     }
@@ -480,7 +492,7 @@
             startInit();
             slidePageInit();
 
-            var url = newSection+'.html';
+            var url = newSection;
 
             if(url!=window.location && bool){
                   //add the new page to the window.history

@@ -3,14 +3,7 @@
     / content-block starts here
     .content-block.light
       .container
-        .panel-top
-          .left.pull-left
-            %a#menu-top-link.menu-top-link Menu
-          .logo.pull-left.text-center
-            %a{:href => "#", :title => "ArtLand Studio"}
-              %img{:alt => "ArtLand Studio", :src => "img/logo.svg", :width => "48"}/
-          .phone.pull-right.text-right
-            %a{:href => "callto:+74952874787"} +7 495 287-47-87
+        =render 'shared/top_bar'
         #services.content
           .flexslider.flex-slider
             %ul.services.slides

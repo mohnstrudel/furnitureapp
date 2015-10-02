@@ -4,83 +4,38 @@
       .row
         .column.col-md-3
           %ul.projects.underline
-            %li
-              %a{:href => "#"} Last project name, or long last project name and may be a little bit more
-              .group Design
-            %li
-              %a{:href => "#"} Last project name, or long last project name
-              .group Development
-            %li
-              %a{:href => "#"} Last project name, or long last project name and may.
-              .group Design
-            %li
-              %a{:href => "#"} Last project name
-              .group Consultation
-            %li
-              %a{:href => "#"} Last project name, or long last project name
-              .group Development
-            %li
-              %a{:href => "#"} Last project name, or long last project name and may.
-              .group Design
-            %li
-              %a{:href => "#"} Last project name, or long last project name
-              .group Development
+            -Project.all.each do |project|
+              %li
+                =link_to project.title, front_project_path(project.id)
+                .group
+                  =project.desctitle
         .column.col-md-3
           %ul.menu.underline
-            %li
-              %a{:href => "#"} Designing
-            %li
-              %a{:href => "#"} Building
-            %li
-              %a{:href => "#"} Consultation
-            %li
-              %a{:href => "#"} Managment
+            -Service.all.each do |service|
+              %li
+                =link_to service.title, front_service_path(service.id)
           .copy
             %p Copyright &copy; 2015 Artland Studio
           .development
-            %p Разработка сайта:
+            %p 
+              Разработка сайта: 
+              =link_to 'Yadadya.Creations', 'http://yadadya.com'
         .column.col-md-3
           %ul.team.underline
-            %li
-              %a{:href => "#"} Антон Константинович Бережнов
-              .info
-                %span.profession Designer
-                %span.works 28 работ
-            %li
-              %a{:href => "#"} Владимир Ряженокиновенов
-              .info
-                %span.profession Developer
-                %span.works 16 работ
-            %li
-              %a{:href => "#"} Сергей Брюсель
-              .info
-                %span.profession Designer
-                %span.works 28 работ
-            %li
-              %a{:href => "#"} Владимир Ряженокиновенов
-              .info
-                %span.profession Developer
-                %span.works 16 работ
-            %li
-              %a{:href => "#"} Сергей Брюсель
-              .info
-                %span.profession Designer
-                %span.works 28 работ
-            %li
-              %a{:href => "#"} Владимир Ряженокиновенов
-              .info
-                %span.profession Developer
-                %span.works 16 работ
-            %li
-              %a{:href => "#"} Сергей Брюсель
-              .info
-                %span.profession Designer
-                %span.works 28 работ
+            -Teammember.all.each do |member|
+              %li
+                =link_to member.name, front_teammembers_path
+                .info
+                  %span.profession
+                    =member.position
+                  %span.works
+                    =member.projects.count
         .column.col-md-3
           .address
             %p
               %strong Адрес
-            %p Ленинский пр-т, дом1, этаж 14, офис 1413 (проезд от метро &laquo;Октябрьская&raquo;).
+            %p
+              =Setting.first.address
             %p &nbsp;
             %p
               %strong Режим работы офиса
@@ -91,41 +46,37 @@
               %br - выходные дни.
           .phone
             %p
-              %a{:href => "callto:+74951126327"} +7 495 112-63-27
+              =link_to Setting.first.phone, "callto:#{Setting.first.phone.gsub(/\s+/, "").gsub(/-/, "")}"
             %p
-              %a{:href => "callto:+74953621547"} +7 495 362-15-47
-            %p
-              %a{:href => "callto:+74951512575"} +7 495 151-25-75
+              =link_to Setting.first.phone2, "callto:#{Setting.first.phone2.gsub(/\s+/, "").gsub(/-/, "")}"
           .emails
             %p
-              %a{:href => "mailto:support@artlands.ru"} support@artlands.ru
-            %p
-              %a{:href => "mailto:info@artlands.ru"} info@artlands.ru
+              =link_to Setting.first.mail, "mailto:#{Setting.first.mail}"
           #map-mini
-            %img{:alt => "", :src => "img/map-mini.jpg"}
+            =image_tag 'front/map-mini.jpg'
       .clearfix
       %ul.nav
         %li
           .item
-            %a{:href => "#"}
+            =link_to root_path do
               %span.number 01
               %span.line
               %span.title Работы
         %li
           .item
-            %a{:href => "#"}
+            =link_to front_services_path do
               %span.number 02
               %span.line.half
               %span.title Услуги
         %li
           .item
-            %a{:href => "#"}
+            =link_to front_teammembers_path do
               %span.number 03
               %span.line.half
               %span.title Команда
         %li
           .item
-            %a{:href => "#"}
+            =link_to contact_path do
               %span.number 04
               %span.line.half
               %span.title Контакты

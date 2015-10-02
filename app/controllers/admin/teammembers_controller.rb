@@ -1,7 +1,7 @@
 class Admin::TeammembersController < AdminController
   layout "admin"
   
-	before_action	:find_member, only: [:update, :edit]
+	before_action	:find_member, only: [:update, :edit, :destroy]
 
   def index
     @teammembers = Teammember.all
@@ -36,7 +36,13 @@ class Admin::TeammembersController < AdminController
       redirect_to admin_teammembers_path
       flash[:success] = "Обновлено"
     end
-  	
+  end
+
+  def destroy
+    if @teammember.destroy
+      redirect_to admin_teammembers_path
+      flash[:info] = 'Удалено'
+    end
   end
 
   private

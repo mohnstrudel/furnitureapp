@@ -6,6 +6,11 @@
 *= require admin/glyphicons
 *= require font-awesome
 
-*= require_tree ../../../vendor/assets/stylesheets/front/.
+*= require front/normalize
+*= require front/bootstrap.min
+*= require front/flexslider
+*= require front/style-cd
+*= require front/style
+*= require front/responsive
 *= require_tree ./front
 */

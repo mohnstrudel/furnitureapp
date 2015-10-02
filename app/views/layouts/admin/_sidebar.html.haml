@@ -58,6 +58,10 @@
         =link_to admin_teammembers_path do
           %span.fa.fa-user
           %span.sidebar-title Команда
+      %li
+        =link_to edit_admin_setting_path(Setting.first.id) do
+          %span.fa.fa-wrench
+          %span.sidebar-title Настройки
       
 
 /       / sidebar bullets

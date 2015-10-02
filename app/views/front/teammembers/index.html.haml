@@ -1,0 +1,91 @@
+%main.cd-main
+  %section.cd-section.index.visible
+    / content-block starts here
+    .content-block.light
+      .container
+        =render 'shared/top_bar'
+        #teams.content
+          .row
+            .teams.teams-block
+              .flexslider.flex-slider
+                %ul.slides
+                  -@firstMembers.in_groups_of(2, false).each_with_index do |member, index|
+                    -if index == 0
+                      %li
+                        .col-md-6
+                          .col-md-6.teams-block.team-member
+                            .image
+                              =image_tag member[0].avatars.first.avatar.url
+                            .desc.dark
+                              .title
+                                =member[0].name
+                              .projects-numbers
+                                .number
+                                  =member[0].projects.count
+                                .name
+                                  %span> /
+                                  ="проект#{russianize(member[0].projects.count)}"
+                          -if member[1]
+                            .col-md-6.teams-block.team-member
+                              .desc.light
+                                .title
+                                  =member[1].name
+                                .projects-numbers
+                                  .number
+                                    =member[1].projects.count
+                                  .name
+                                    %span> /
+                                    ="проект#{russianize(member[1].projects.count)}"
+                              .image
+                                =image_tag member[1].avatars.first.avatar.url
+                        .col-md-6.about
+                          .aboutus
+                            .title О компании
+                            %p
+                              -@splittedText[0].each do |first|
+                                =first
+                            %p
+                              -if @splittedText[1]
+                                -@splittedText[1].each do |second|
+                                  =second
+                            %p.yellow
+                              -if @splittedText[2]
+                                -@splittedText[2].each do |third|
+                                  =third
+                            %p
+                              -if @splittedText[3]
+                                -@splittedText[3].each do |fourth|
+                                  =fourth
+                          .about-logo
+                            .title Art Land Studio
+                  -@teammembers.in_groups_of(4,false).each do |members|
+                    %li
+                      -members.in_groups_of(2, false).each do |twoMembers|
+                        .col-md-6
+                          -if twoMembers[0]
+                            .col-md-6.teams-block.team-member
+                              .image
+                                =twoMembers[0].avatars.first.avatar.url
+                              .desc.dark
+                                .title
+                                  =twoMembers[0].name
+                                .projects-numbers
+                                  .number
+                                    =twoMembers[0].projects.count
+                                  .name
+                                    %span> /
+                                    ="проект#{russianize(twoMembers[0].projects.count)}"
+                          -if twoMembers[1]
+                            .col-md-6.teams-block.team-member
+                              .desc.light
+                                .title 
+                                  =twoMembers[1].name
+                                .projects-numbers
+                                  .number
+                                    =twoMembers[1].projects.count
+                                  .name
+                                    %span> /
+                                    ="проект#{russianize(twoMembers[1].projects.count)}"
+                              .image
+                                =twoMembers[0].avatars.first.avatar.url
+        / content-block ends here
