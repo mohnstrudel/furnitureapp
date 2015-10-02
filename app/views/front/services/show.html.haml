@@ -25,8 +25,7 @@
               .col-md-6
                 .text
                   %p
-                    / -if @service.desctitle
-                    /   =@service.desctitle
+                    =@service.desctitle
                   %p
                     -@splittedText[0].each do |first|
                       =first

@@ -49,7 +49,7 @@
 										%span.checkbox.mn
 							%td.w100
 								-if service.servicepics.first
-									=image_tag service.servicepics.first.servicepic.to_s, class: 'img-responsive mw40 ib mr10', title: service.title
+									=image_tag service.servicepics.first.servicepic.url(:thumb_small), class: 'img-responsive mw40 ib mr10', title: service.title
 								-else
 									=holder_tag 40
 							%td

@@ -52,7 +52,7 @@ class Admin::ServicesController < AdminController
 	end
 
 	def service_params
-		params.require(:service).permit(:title, :description,
+		params.require(:service).permit(:title, :description, :desctitle,
 			servicepics_attributes: [:id, :servicepic, :service_id, :_destroy])
 	end
 end

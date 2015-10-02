@@ -1,3 +1,12 @@
+.row
+	.col-md-4.col-xs-12
+		-if @project.errors.any?
+			%ul.alert.alert-danger
+				-@project.errors.full_messages.each do |msg|
+					%li 
+						=msg
+	.col-md-8
+
 =form_for([:admin, @project], html: {multipart: true}) do |f|
 	.panel.mb25.mt5
 		.panel-heading
@@ -15,7 +24,7 @@
 							.fileupload.fileupload-new.admin-form{"data-provides" => "fileupload"}
 								.fileupload-preview.thumbnail.mb20
 									-if @project.projectphotos.any?
-										=image_tag @project.projectphotos.first.image
+										=image_tag @project.projectphotos.first.image.url(:thumb_medium)
 									-else
 										=holder_tag '222x140'
 								.row
@@ -34,7 +43,7 @@
 											.panel-body
 												%p
 													=f.fields_for :projectphotos do |builder|
-														=image_tag builder.object.image, width: 40
+														=image_tag builder.object.image.url(:thumb_small)
 														=builder.label :_destroy, 'Удалить фотографию'
 														=builder.check_box :_destroy
 														%br

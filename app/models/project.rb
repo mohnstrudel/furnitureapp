@@ -6,6 +6,8 @@ class Project < ActiveRecord::Base
 
 	accepts_nested_attributes_for	:projectphotos, allow_destroy: true
 
+	validates :title, :desctitle, :description, presence: true
+
 	def next
 		Project.where("id > ?", id).order("id ASC").first || Project.first
 	end

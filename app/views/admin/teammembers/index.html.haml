@@ -49,7 +49,7 @@
 										%span.checkbox.mn
 							%td.w100
 								-if teammember.avatars.first
-									=image_tag teammember.avatars.first.avatar.to_s, class: 'img-responsive mw40 ib mr10', title: teammember.name
+									=image_tag teammember.avatars.first.avatar.url(:thumb_small), class: 'img-responsive mw40 ib mr10', title: teammember.name
 								-else
 									=holder_tag 40
 							%td

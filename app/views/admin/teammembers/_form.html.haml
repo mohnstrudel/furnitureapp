@@ -14,11 +14,29 @@
 						.col-md-4
 							.fileupload.fileupload-new.admin-form{"data-provides" => "fileupload"}
 								.fileupload-preview.thumbnail.mb20
-									=holder_tag '222x140'
+									-if @teammember.avatars.any?
+										=image_tag @teammember.avatars.first.avatar.url(:thumb_medium)
+									-else
+										=holder_tag '222x140'
 								.row
 									.col-xs-12.pr5
-										=f.fields_for :avatar, Avatar.new, html: { multipart: true, id: "fileupload"	} do |op|
-											= op.file_field :avatar, multiple: true, id: 'fileupload', name: "teammember[avatars_attributes][][avatar]", class: 'button btn-system btn-file btn-block'
+										=file_field_tag :avatar, name: "avatars[]", multipart: true, id: "fileupload", type: :file 
+							-if @teammember.avatars.any?
+								.row
+									.col-md-12.pl15
+										#p1.panel.sort-disable.mb50{"data-panel-collapse" => "false", "data-panel-color" => "false", "data-panel-fullscreen" => "false", "data-panel-remove" => "false"}
+											.panel-heading
+												%span.panel-icon
+													%i.fa.fa-pencil
+												%span.panel-title Удалить
+											.panel-body
+												%p
+													=f.fields_for :avatars do |builder|
+														=image_tag builder.object.avatar.url(:thumb_small)
+														=builder.label :_destroy, 'Удалить фотографию'
+														=builder.check_box :_destroy
+														%br
+														%hr.short.alt
 						.col-md-8.pl15
 							.section.mb10
 								%label.field.prepend-icon

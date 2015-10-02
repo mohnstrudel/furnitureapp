@@ -1,4 +1,5 @@
 class Admin::ServicepicsController < AdminController
+	
 	def create
 		@servicepic = Servicepic.new(servicepic_params)
 		@servicepic.save

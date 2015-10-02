@@ -49,7 +49,7 @@
 										%span.checkbox.mn
 							%td.w100
 								-if project.projectphotos.first
-									=image_tag project.projectphotos.first.image.to_s, class: 'img-responsive mw40 ib mr10', title: project.title
+									=image_tag project.projectphotos.first.image.url(:thumb_small), class: 'img-responsive mw40 ib mr10', title: project.title
 								-else
 									=holder_tag 40
 							%td

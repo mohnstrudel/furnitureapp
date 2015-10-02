@@ -17,6 +17,7 @@ gem "haml-rails", "~> 0.9"
 
 # Uploading images
 gem 'carrierwave'
+gem 'mini_magick', '~> 4.3.3'
 
 # Handling the user stuff
 gem 'devise'
