@@ -1,0 +1,2 @@
+module Admin::ServicepicsHelper
+end

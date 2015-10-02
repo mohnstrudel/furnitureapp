@@ -14,8 +14,13 @@ class Admin::ServicesController < AdminController
 	def create
 		@service = Service.new(service_params)
 		if @service.save
+			if params[:servicepics]
+				params[:servicepics].each { |image| @service.servicepics.create(servicepic: image) }
+			end
 			redirect_to admin_services_path
+			flash[:success] = 'Создано'
 		else
+			flash[:alert] = 'Что-то пошло не так'
 			render 'new'
 		end
 	end
@@ -24,8 +29,13 @@ class Admin::ServicesController < AdminController
 	end
 
 	def update
-		@service.update(service_params)
-		redirect_to admin_services_path
+		if @service.update(service_params)
+			if params[:servicepics]
+				params[:servicepics].each { |image| @service.servicepics.create(servicepic: image) }
+			end
+			redirect_to admin_services_path
+			flash[:success] = "Обновлено"
+		end
 	end
 
 	def destroy
@@ -43,6 +53,6 @@ class Admin::ServicesController < AdminController
 
 	def service_params
 		params.require(:service).permit(:title, :description,
-			servicepics_attributes: [:servicepic, :service_id])
+			servicepics_attributes: [:id, :servicepic, :service_id, :_destroy])
 	end
 end
