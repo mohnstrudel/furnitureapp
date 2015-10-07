@@ -19,7 +19,7 @@
               -@project.projectphotos.each do |pp|
                 %li
                   .image
-                    =image_tag pp.image.to_s
+                    =image_tag pp.image.url(:main_image)
             .custom-navigation
               %a.flex-prev{:href => "#"}
               %a.flex-next{:href => "#"}
@@ -50,10 +50,10 @@
           .row.next-block
             .col-md-6.current
               .image.grayscale
-                =image_tag @project.projectphotos.first.image.to_s
+                =image_tag @project.projectphotos.first.image.url(:thumb_next)
             .col-md-6.next
               .image
-                =image_tag @project.next.projectphotos.first.image.to_s
+                =image_tag @project.next.projectphotos.first.image.url(:thumb_next)
               .wrap
                 .middle
                   .title

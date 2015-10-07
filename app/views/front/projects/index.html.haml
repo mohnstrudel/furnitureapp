@@ -10,7 +10,7 @@
 							-@projects.each do |project|
 								%li
 									.image.grayscale
-										=image_tag project.projectphotos.first.image
+										=image_tag project.projectphotos.first.image.url(:main_image)
 									.right
 										.middle
 											.title
