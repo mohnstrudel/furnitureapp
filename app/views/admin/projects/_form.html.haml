@@ -29,7 +29,7 @@
 										=holder_tag '222x140'
 								.row
 									.col-xs-12.pr5
-										=file_field_tag :image, name: "projectphotos[]", id: 'fileupload', type: :file, multiple: true
+										=file_field_tag :image, name: "projectphotos[]", type: :file, multiple: true
 										/ =f.fields_for :projectphoto, Projectphoto.new, html: { multipart: true, id: "fileupload"	} do |op|
 										/ 	= op.file_field :image, multiple: true, id: 'fileupload', name: "project[projectphotos_attributes][][image]", class: 'button btn-system btn-file btn-block'
 							-if @project.projectphotos.any?
