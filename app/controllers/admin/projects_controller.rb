@@ -18,8 +18,9 @@ class Admin::ProjectsController < AdminController
 				params[:projectphotos].each do |image| 
 					p image
 					p "inside of each image param"
-					if @project.projectphotos.create(image: image) 
-						p "created image"
+					@newImage = @project.projectphotos.build(image: image) 
+					if @newImage.save
+						p "saved image"
 					end
 				end
 			end
