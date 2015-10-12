@@ -14,8 +14,14 @@ class Admin::ProjectsController < AdminController
 	def update
 		if @project.update(project_params)
 			if params[:projectphotos]
-
-				params[:projectphotos].each { |image| @project.projectphotos.create(image: image) }
+				p "inside params"
+				params[:projectphotos].each do |image| 
+					p image
+					p "inside of each image param"
+					if @project.projectphotos.create(image: image) 
+						p "created image"
+					end
+				end
 			end
 			redirect_to admin_projects_path
 			flash[:success] = "Обновлено"
