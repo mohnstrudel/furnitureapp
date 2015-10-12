@@ -1,4 +1,4 @@
-=form_for([:admin, @teammember]) do |f|
+=form_for([:admin, @teammember], html: { multipart: true }) do |f|
 	.panel.mb25.mt5
 		.panel-heading
 			%span.panel-title.hidden-xs
@@ -20,7 +20,7 @@
 										=holder_tag '222x140'
 								.row
 									.col-xs-12.pr5
-										=file_field_tag :avatar, name: "avatars[]", multipart: true, id: "fileupload", type: :file 
+										=file_field_tag :avatar, name: "avatars[]"
 							-if @teammember.avatars.any?
 								.row
 									.col-md-12.pl15

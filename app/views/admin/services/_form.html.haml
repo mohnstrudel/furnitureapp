@@ -7,7 +7,7 @@
 						=msg
 	.col-md-8
 
-=form_for([:admin, @service]) do |f|
+=form_for([:admin, @service], html: {multipart: true}) do |f|
 	.panel.mb25.mt5
 		.panel-heading
 			%span.panel-title.hidden-xs
@@ -21,7 +21,7 @@
 				#tab1_1.tab-pane.active
 					.section.row.mbn
 						.col-md-4
-							.fileupload.fileupload-new.admin-form{"data-provides" => "fileupload"}
+							.fileupload.fileupload-new
 								.fileupload-preview.thumbnail.mb20
 									-if @service.servicepics.any?
 										=image_tag @service.servicepics.first.servicepic.url(:thumb_medium)
@@ -29,7 +29,7 @@
 										=holder_tag '222x140'
 								.row
 									.col-xs-12.pr5
-										=file_field_tag :servicepic, name: "servicepics[]", id: 'fileupload', multiple: true, type: :file
+										=file_field_tag :servicepic, name: "servicepics[]"
 							-if @service.servicepics.any?
 								.row
 									.col-md-12.pl15
