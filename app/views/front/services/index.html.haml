@@ -12,7 +12,7 @@
                   -service_four.each do |service_single|
                     .service
                       .image.grayscale
-                        =image_tag service_single.servicepics.first.servicepic.to_s
+                        =image_tag service_single.servicepics.first.servicepic.url
                       .center.dark
                         .middle
                           .title

@@ -42,7 +42,7 @@
               -@service.servicepics.each do |sp|
                 %li
                   .image
-                    =image_tag sp.servicepic.to_s
+                    =image_tag sp.servicepic.url(:main_image)
             .custom-navigation
               %a.flex-prev{:href => "#"}
               %a.flex-next{:href => "#"}
