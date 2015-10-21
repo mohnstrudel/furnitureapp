@@ -48,6 +48,10 @@ class ServicepicUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [1170, 700]
   end
 
+  version :hot_image do
+    process :resize_to_fill => [1980, 1200]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

@@ -34,11 +34,11 @@
                 .teams.teams-block
                   .flexslider.flex-slider-teams
                     %ul.slides
-                      -@project.teammembers.in_groups_of(2).each do |two_members|
+                      -@project.teammembers.in_groups_of(2, false).each do |two_members|
                         %li
                           .col-md-6.teams-block.team-member
                             .image
-                              =image_tag two_members[0].avatars.first.avatar.url, alt: ''
+                              =image_tag two_members[0].avatars.first.avatar.url(:thumb_medium), alt: ''
                             .desc.dark
                               .title
                                 =two_members[0].name
@@ -48,19 +48,18 @@
                                 .name
                                   %span> /
                                   ="проект#{russianize(two_members[0].projects.count)}"
-                          -if two_members[1]
-                            .col-md-6.teams-block.team-member
-                              .desc.light
-                                .title
-                                  =two_members[1].name
-                                .projects-numbers
-                                  .number
-                                    =two_members[1].projects.count
-                                  .name
-                                    %span> /
-                                    ="проект#{russianize(two_members[1].projects.count)}"
-                              .image
-                                =image_tag two_members[1].avatars.first.avatar.url, alt: ''
+                          .col-md-6.teams-block.team-member
+                            .desc.light
+                              .title
+                                =two_members[1].name
+                              .projects-numbers
+                                .number
+                                  =two_members[1].projects.count
+                                .name
+                                  %span> /
+                                  ="проект#{russianize(two_members[1].projects.count)}"
+                            .image
+                              =image_tag two_members[1].avatars.first.avatar.url(:thumb_medium), alt: ''
               .col-md-6
                 .text
                   %p

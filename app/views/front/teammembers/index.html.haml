@@ -15,7 +15,7 @@
                         .col-md-6
                           .col-md-6.teams-block.team-member
                             .image
-                              =image_tag member[0].avatars.first.avatar.url
+                              =image_tag member[0].avatars.first.avatar.url(:thumb_medium)
                             .desc.dark
                               .title
                                 =member[0].name
@@ -37,7 +37,7 @@
                                     %span> /
                                     ="проект#{russianize(member[1].projects.count)}"
                               .image
-                                =image_tag member[1].avatars.first.avatar.url
+                                =image_tag member[1].avatars.first.avatar.url(:thumb_medium)
                         .col-md-6.about
                           .aboutus
                             .title О компании
