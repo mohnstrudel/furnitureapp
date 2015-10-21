@@ -92,6 +92,15 @@
       
     }
     
+    $('.flex-slider-teams').flexslider({
+        animation: "slide",
+        slideshow: false,
+        direction: "horizontal",
+        mousewheel: false,
+        controlNav: true,
+        directionNav: false
+    });
+    
   });
   
   /* map */
@@ -101,15 +110,10 @@
     if ($('#map').length) {
     
       $('#map').height($('.content-block').height());
-
-      var myLatLng = {lat: 55.721394, lng: 37.778801};
-      var center = {lat: 55.721394, lng: 37.758801};
-
-
     
       map = new google.maps.Map(document.getElementById('map'), {
-        center: center,
-        zoom: 14,
+        center: new google.maps.LatLng(56, 37),
+        zoom: 8,
         zoomControl: false,
         streetViewControl: false,
         scaleControl: false,
@@ -150,13 +154,6 @@
           }
         ]
       });
-
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        map: map,
-        title: 'ArtLand Studio',
-        label: 'ArtLand Studio'
-      });
     
     }
   }
@@ -177,7 +174,7 @@
     //if ($(window).width() < 480) {
     if ($(window).width() < 960) {
       
-      if ($('.cd-side-navigation .nav .active')) {
+      if ($('.cd-side-navigation .nav .active').length) {
         $('.cd-side-navigation .nav').animate({left:'-'+$('.cd-side-navigation .nav .active').parents('li').offset().left});
       }
 
@@ -310,6 +307,8 @@
         
         $('.number-slide .total').text('/' + countAll);
         $('.number-slide .current').text(currentSlide);
+        
+        $('.content-block.detail .teams .flex-control-nav').css({'margin-right':'-'+$('.content-block.detail .teams .flex-control-nav').outerWidth()/2+'px'});
       },
       after: function(el) {
         var currentSlide = el.currentSlide + 1;
@@ -339,21 +338,25 @@
 
     //select a new section
     dashboard.on('click', 'a', function(event){
-      event.preventDefault();
-      
-      dashboard.find('a').removeClass('active');
-      
+
       var target = $(this),
         //detect which section user has chosen
         sectionTarget = target.data('menu'),
         num = target.data('num');
+        
+      if (sectionTarget && sectionTarget != '' && num)
+      {
+        event.preventDefault();
+        
+        dashboard.find('a').removeClass('active');
       
-      if( !target.hasClass('selected') && !isAnimating ) {
-        //if user has selected a section different from the one alredy visible - load the new content
-        triggerAnimation(sectionTarget, true, num);
-      }
+        if( !target.hasClass('selected') && !isAnimating ) {
+          //if user has selected a section different from the one alredy visible - load the new content
+          triggerAnimation(sectionTarget, true, num);
+        }
 
-      firstLoad = true;
+        firstLoad = true;
+      }
     });
 
     //detect the 'popstate' event - e.g. user clicking the back button
@@ -492,12 +495,13 @@
             startInit();
             slidePageInit();
 
+            // var url = newSection+'.html';
             var url = newSection;
-
+            console.log(url);
             if(url!=window.location && bool){
                   //add the new page to the window.history
                   //if the new page was triggered by a 'popstate' event, don't add it
-                  window.history.pushState({path: url},'',url);
+                  window.history.pushState(null, null, url);
               }
           //});
         });

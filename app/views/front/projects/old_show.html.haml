@@ -1,5 +1,6 @@
 %main.cd-main
   %section.cd-section.index.visible
+    / content-block starts here
     .content-block.dark.detail
       .container
         .panel-top
@@ -22,7 +23,7 @@
             .custom-navigation
               %a.flex-prev{:href => "#"}
               %a.flex-next{:href => "#"}
-          .title.title-detail 
+          .title.title-detail
             =@project.title
           .number-slide
             %span.current
@@ -30,37 +31,7 @@
           .description
             .row
               .col-md-6
-                .title Команда проекта
-                .teams.teams-block
-                  .flexslider.flex-slider-teams
-                    %ul.slides
-                      -@project.teammembers.in_groups_of(2).each do |two_members|
-                        %li
-                          .col-md-6.teams-block.team-member
-                            .image
-                              =image_tag two_members[0].avatars.first.avatar.url, alt: ''
-                            .desc.dark
-                              .title
-                                =two_members[0].name
-                              .projects-numbers
-                                .number
-                                  =two_members[0].projects.count
-                                .name
-                                  %span> /
-                                  ="проект#{russianize(two_members[0].projects.count)}"
-                          -if two_members[1]
-                            .col-md-6.teams-block.team-member
-                              .desc.light
-                                .title
-                                  =two_members[1].name
-                                .projects-numbers
-                                  .number
-                                    =two_members[1].projects.count
-                                  .name
-                                    %span> /
-                                    ="проект#{russianize(two_members[1].projects.count)}"
-                              .image
-                                =image_tag two_members[1].avatars.first.avatar.url, alt: ''
+                .title Designing
               .col-md-6
                 .text
                   %p
@@ -89,3 +60,4 @@
                     =link_to @project.next.title, front_project_path(@project.next)
                 .helper
     / content-block ends here
+#cd-loading-bar.index{"data-scale" => "1"}

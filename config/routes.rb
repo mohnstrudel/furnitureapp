@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   # Custom routes because of the javascript
 
   get '/index', to: 'front/projects#index', as: '/' 
-  get '/teams', to: 'front/teammembers#index', as: '/team'
-  get '/contacts', to: 'front/static_pages#contacts'
-  get '/services', to: 'front/services#index'
+  get '/teams', to: 'front/teammembers#index', as: '/teams'
+  get '/contacts', to: 'front/static_pages#contacts', as: '/contacts'
+  get '/services', to: 'front/services#index', as: '/services'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
