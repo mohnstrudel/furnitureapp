@@ -344,7 +344,7 @@
         sectionTarget = target.data('menu'),
         num = target.data('num');
         
-      if (sectionTarget && sectionTarget != '' && num)
+      if (sectionTarget && sectionTarget != '' && num && !$('.content-block').hasClass('detail'))
       {
         event.preventDefault();
         
@@ -497,11 +497,11 @@
 
             // var url = newSection+'.html';
             var url = newSection;
-            console.log(url);
+            console.log(window.location);
             if(url!=window.location && bool){
                   //add the new page to the window.history
                   //if the new page was triggered by a 'popstate' event, don't add it
-                  window.history.pushState(null, null, url);
+                  window.history.pushState( {path: window.location} , null, window.location);
               }
           //});
         });
