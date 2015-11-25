@@ -107,13 +107,16 @@
 
   var map;
   function initMap() {
+
+    var myLatLng = {lat: 55.7237809, lng: 37.7426341};
+
     if ($('#map').length) {
     
       $('#map').height($('.content-block').height());
     
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(56, 37),
-        zoom: 8,
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: new google.maps.LatLng(55.721696, 37.732115),
+        zoom: 14,
         zoomControl: false,
         streetViewControl: false,
         scaleControl: false,
@@ -155,9 +158,17 @@
         ]
       });
     
+
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Артлэнд Студио'
+    });
     }
   }
   
+
+
   google.maps.event.addDomListener(window, 'load', initMap);
   
   /* map ends */

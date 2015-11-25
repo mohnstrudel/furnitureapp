@@ -2,7 +2,7 @@ class Front::ServicesController < ApplicationController
 	before_action :find_service, only: :show
 
 	def index
-		@services = Service.all
+		@services = Service.all.order(created_at: :asc)
 	end
 
 	def show
