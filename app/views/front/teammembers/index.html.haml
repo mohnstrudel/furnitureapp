@@ -65,7 +65,7 @@
                           -if twoMembers[0]
                             .col-md-6.teams-block.team-member
                               .image
-                                =twoMembers[0].avatars.first.avatar.url
+                                =image_tag twoMembers[0].avatars.first.avatar.url(:thumb_medium)
                               .desc.dark
                                 .title
                                   =twoMembers[0].name
@@ -87,5 +87,5 @@
                                     %span> /
                                     ="проект#{russianize(twoMembers[1].projects.count)}"
                               .image
-                                =twoMembers[0].avatars.first.avatar.url
+                                =image_tag twoMembers[1].avatars.first.avatar.url(:thumb_medium)
         / content-block ends here
