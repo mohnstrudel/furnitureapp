@@ -11,7 +11,7 @@
                 %span.close-menu
             .helper
           .phone.pull-right.text-right
-            %a{:href => "callto:+74952874787"} +7 495 287-47-87
+            =link_to Setting.first.phone, "callto:#{Setting.first.phone.gsub(/\s+/, "").gsub(/-/, "")}"
         .content.project
           .flexslider.flex-slider-detail
             %ul.projects.slides
