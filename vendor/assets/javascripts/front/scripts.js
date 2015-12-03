@@ -108,14 +108,14 @@
   var map;
   function initMap() {
 
-    var myLatLng = {lat: 55.7237809, lng: 37.7426341};
+    var myLatLng = {lat: 55.7936958, lng: 37.8988428};
 
     if ($('#map').length) {
     
       $('#map').height($('.content-block').height());
     
       var map = new google.maps.Map(document.getElementById('map'), {
-        center: new google.maps.LatLng(55.721696, 37.732115),
+        center: new google.maps.LatLng(55.7936958, 37.8788428),
         zoom: 14,
         zoomControl: false,
         streetViewControl: false,
