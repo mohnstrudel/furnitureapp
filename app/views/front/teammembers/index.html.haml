@@ -7,7 +7,7 @@
         #teams.content
           .row
             .teams.teams-block
-              .flexslider.flex-slider.teamslides
+              .flexslider.flex-slider
                 %ul.slides
                   -@firstMembers.in_groups_of(2, false).each_with_index do |member, index|
                     -if index == 0
