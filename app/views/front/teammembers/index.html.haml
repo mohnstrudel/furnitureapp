@@ -7,14 +7,14 @@
         #teams.content
           .row
             .teams.teams-block
-              .flexslider.flex-slider
+              .flexslider.flex-slider.teamslides
                 %ul.slides
                   -@firstMembers.in_groups_of(2, false).each_with_index do |member, index|
                     -if index == 0
                       %li
                         .col-md-6
                           .col-md-6.teams-block.team-member
-                            .image
+                            .image.teamimage
                               =image_tag member[0].avatars.first.avatar.url(:thumb_medium)
                             .desc.dark
                               .title
@@ -36,7 +36,7 @@
                                   .name
                                     %span> /
                                     ="проект#{russianize(member[1].projects.count)}"
-                              .image
+                              .image.teamimage
                                 =image_tag member[1].avatars.first.avatar.url(:thumb_medium)
                         .col-md-6.about
                           .aboutus
@@ -64,7 +64,7 @@
                         .col-md-6
                           -if twoMembers[0]
                             .col-md-6.teams-block.team-member
-                              .image
+                              .image.teamimage
                                 =image_tag twoMembers[0].avatars.first.avatar.url(:thumb_medium)
                               .desc.dark
                                 .title
@@ -86,6 +86,6 @@
                                   .name
                                     %span> /
                                     ="проект#{russianize(twoMembers[1].projects.count)}"
-                              .image
+                              .image.teamimage
                                 =image_tag twoMembers[1].avatars.first.avatar.url(:thumb_medium)
         / content-block ends here
