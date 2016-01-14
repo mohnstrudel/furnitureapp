@@ -51,7 +51,8 @@
   -webkit-backface-visibility: hidden;
 }
 .flexslider .slides img {
-  width: 100%;
+  /* Comment out as of 14/01/2016 because of bad image resizing*/
+  /*width: 100%;*/
   display: block;
 }
 .flexslider .slides:after {
